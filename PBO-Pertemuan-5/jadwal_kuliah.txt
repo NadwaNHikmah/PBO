@@ -1,0 +1,9 @@
+selasa, 08.00, pbo
+selasa, 08.00-10.40, pbo
+selasa, 13.00-14.40, aik2
+selasa, 14.41-17.10, arsitektur & organisasi komputer
+rabu, 09.30-11.30, sistem informasi
+rabu, 13.00-14.30, kalkulus2
+jumat, 08.00-09.40, komunikasi data
+jumat, 09.41-11.20, statistik & probabilitas
+jumat, 13.00-15.30, struktur data & algoritma
