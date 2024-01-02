@@ -1,0 +1,142 @@
+Microsoft Windows [Version 10.0.19045.3448]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>cd\
+
+C:\>c:
+
+C:\>cd xampp
+
+C:\xampp>cd mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database kampus;
+ERROR 1007 (HY000): Can't create database 'kampus'; database exists
+MariaDB [(none)]> open database kampus;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'open database kampus' at line 1
+MariaDB [(none)]> create database campus;
+Query OK, 1 row affected (0.005 sec)
+
+MariaDB [(none)]> use campus
+Database changed
+MariaDB [campus]> create table matakuliah(
+    -> id int primary key auto_increment,
+    -> kodemk varchar(10) not null,
+    -> namamk varchar(100) not null,
+    -> sks int not null);
+Query OK, 0 rows affected (0.830 sec)
+
+MariaDB [campus]> show tables;
++------------------+
+| Tables_in_campus |
++------------------+
+| matakuliah       |
++------------------+
+1 row in set (0.002 sec)
+
+MariaDB [campus]> describe matakuliah;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int(11)      | NO   | PRI | NULL    | auto_increment |
+| kodemk | varchar(10)  | NO   |     | NULL    |                |
+| namamk | varchar(100) | NO   |     | NULL    |                |
+| sks    | int(11)      | NO   |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+4 rows in set (0.488 sec)
+
+MariaDB [campus]> insert into matakuliah(kodemk,namamk,sks)values('1001','PBO',3);
+Query OK, 1 row affected (1.902 sec)
+
+MariaDB [campus]> insert into matakuliah(kodemk,namamk,sks)values('1002','Bhs. Inggris',2);
+Query OK, 1 row affected (0.126 sec)
+
+MariaDB [campus]> insert into matakuliah(kodemk,namamk,sks)values('1003','Bhs. Indonesia',2);
+Query OK, 1 row affected (0.066 sec)
+
+MariaDB [campus]> insert into matakuliah(kodemk,namamk,sks)values('1004','Agama Islam',2);
+Query OK, 1 row affected (0.078 sec)
+
+MariaDB [campus]> select * from matakuliah;
++----+--------+----------------+-----+
+| id | kodemk | namamk         | sks |
++----+--------+----------------+-----+
+|  1 | 1001   | PBO            |   3 |
+|  2 | 1002   | Bhs. Inggris   |   2 |
+|  3 | 1003   | Bhs. Indonesia |   2 |
+|  4 | 1004   | Agama Islam    |   2 |
++----+--------+----------------+-----+
+4 rows in set (0.111 sec)
+
+MariaDB [campus]> insert into matakuliah(kodemk,namamk,sks)values('1005','Algoritma',2);
+Query OK, 1 row affected (0.068 sec)
+
+MariaDB [campus]> insert into matakuliah(kodemk,namamk,sks)values('1006','Kewirausahaan',2);
+Query OK, 1 row affected (0.041 sec)
+
+MariaDB [campus]> insert into matakuliah(kodemk,namamk,sks)values('1007','Basis Data',3);
+Query OK, 1 row affected (0.042 sec)
+
+MariaDB [campus]> select * from matakuliah;
++----+--------+----------------+-----+
+| id | kodemk | namamk         | sks |
++----+--------+----------------+-----+
+|  1 | 1001   | PBO            |   3 |
+|  2 | 1002   | Bhs. Inggris   |   2 |
+|  3 | 1003   | Bhs. Indonesia |   2 |
+|  4 | 1004   | Agama Islam    |   2 |
+|  5 | 1005   | Algoritma      |   2 |
+|  6 | 1006   | Kewirausahaan  |   2 |
+|  7 | 1007   | Basis Data     |   3 |
++----+--------+----------------+-----+
+7 rows in set (0.001 sec)
+
+MariaDB [campus]> update matakuliah set namamk='PBO2' where kodemk='1001';
+Query OK, 1 row affected (0.234 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [campus]> select * from matakuliah;
++----+--------+----------------+-----+
+| id | kodemk | namamk         | sks |
++----+--------+----------------+-----+
+|  1 | 1001   | PBO2           |   3 |
+|  2 | 1002   | Bhs. Inggris   |   2 |
+|  3 | 1003   | Bhs. Indonesia |   2 |
+|  4 | 1004   | Agama Islam    |   2 |
+|  5 | 1005   | Algoritma      |   2 |
+|  6 | 1006   | Kewirausahaan  |   2 |
+|  7 | 1007   | Basis Data     |   3 |
++----+--------+----------------+-----+
+7 rows in set (0.001 sec)
+
+MariaDB [campus]> delete from matakuliah where id='3';
+Query OK, 1 row affected (0.098 sec)
+
+MariaDB [campus]> select * from matakuliah;
++----+--------+---------------+-----+
+| id | kodemk | namamk        | sks |
++----+--------+---------------+-----+
+|  1 | 1001   | PBO2          |   3 |
+|  2 | 1002   | Bhs. Inggris  |   2 |
+|  4 | 1004   | Agama Islam   |   2 |
+|  5 | 1005   | Algoritma     |   2 |
+|  6 | 1006   | Kewirausahaan |   2 |
+|  7 | 1007   | Basis Data    |   3 |
++----+--------+---------------+-----+
+6 rows in set (0.001 sec)
+
+MariaDB [campus]>
+
+
+

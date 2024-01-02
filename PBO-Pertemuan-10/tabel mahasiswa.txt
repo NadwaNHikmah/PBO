@@ -1,0 +1,81 @@
+Microsoft Windows [Version 10.0.19045.3448]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>cd\
+
+C:\>c:
+
+C:\>cd xampp
+
+C:\xampp>cd mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 11
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database mahasiswa;
+Query OK, 1 row affected (0.052 sec)
+
+MariaDB [(none)]> use mahasiswa
+Database changed
+MariaDB [mahasiswa]> create table tif22d(
+    -> id int primary key auto_increment,
+    -> nim varchar(10) unique,
+    -> nama varchar(100) not null,
+    -> jk char(1) not null,
+    -> prodi varchar(10) not null);
+Query OK, 0 rows affected (0.620 sec)
+
+MariaDB [mahasiswa]> show tables;
++---------------------+
+| Tables_in_mahasiswa |
++---------------------+
+| tif22d              |
++---------------------+
+1 row in set (0.002 sec)
+
+MariaDB [mahasiswa]> describe tif22d;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int(11)      | NO   | PRI | NULL    | auto_increment |
+| nim   | varchar(10)  | YES  | UNI | NULL    |                |
+| nama  | varchar(100) | NO   |     | NULL    |                |
+| jk    | char(1)      | NO   |     | NULL    |                |
+| prodi | varchar(10)  | NO   |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+5 rows in set (0.061 sec)
+
+MariaDB [mahasiswa]> insert into tif22d(nim, nama, jk, prodi)values('220511099','NadzwaNurulHikmah','P','Teknik Informatika');
+Query OK, 1 row affected, 1 warning (0.163 sec)
+
+MariaDB [mahasiswa]> insert into tif22d(nim, nama, jk, prodi)values('220511111','Nurkholifah','P','Teknik Informatika');
+Query OK, 1 row affected, 1 warning (0.072 sec)
+
+MariaDB [mahasiswa]> insert into tif22d(nim, nama, jk, prodi)values('220511127','PutriRagitaDivaAnjani','P','Teknik Informatika');
+Query OK, 1 row affected, 1 warning (0.044 sec)
+
+MariaDB [mahasiswa]> insert into tif22d(nim, nama, jk, prodi)values('220511122','MYusufKurnia','L','Teknik Informatika');
+Query OK, 1 row affected, 1 warning (0.069 sec)
+
+MariaDB [mahasiswa]> select * from tif22d;
++----+-----------+-----------------------+----+------------+
+| id | nim       | nama                  | jk | prodi      |
++----+-----------+-----------------------+----+------------+
+|  1 | 220511099 | NadzwaNurulHikmah     | P  | Teknik Inf |
+|  2 | 220511111 | Nurkholifah           | P  | Teknik Inf |
+|  3 | 220511127 | PutriRagitaDivaAnjani | P  | Teknik Inf |
+|  4 | 220511122 | MYusufKurnia          | L  | Teknik Inf |
++----+-----------+-----------------------+----+------------+
+4 rows in set (0.001 sec)
+
+MariaDB [mahasiswa]>
+
